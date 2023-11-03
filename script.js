@@ -23,6 +23,11 @@ let addTask = function (event) {
     bindInCompleteTask(listItem, completeTask);
 }
 
+let bindInCompleteTask = function (listItem, clickCheckBox) {
+    let checkBox = listItem.querySelector("input[type='checkbox']");
+    checkBox.onchange = clickCheckBox;
+}
+
 let completeTask = function () {
     let listItem = this.parentNode;
     let checkBox = listItem.querySelector("input[type='checkbox']");
@@ -36,19 +41,14 @@ let completeTask = function () {
     bindCompleteTask(listItem, deleteTask);
 }
 
-let deleteTask = function () {
-    let listItem = this.parentNode;
-    completeUL.removeChild(listItem);
-}
-
 let bindCompleteTask = function (listItem, clickDeleteButton) {
     let deleteButton = listItem.querySelector('.delete');
     deleteButton.onclick = clickDeleteButton;
 }
 
-let bindInCompleteTask = function (listItem, clickCheckBox) {
-    let checkBox = listItem.querySelector("input[type='checkbox']");
-    checkBox.onchange = clickCheckBox;
+let deleteTask = function () {
+    let listItem = this.parentNode;
+    completeUL.removeChild(listItem);
 }
 
 for (let i = 0; i < taskUL.children.length; i++) {
